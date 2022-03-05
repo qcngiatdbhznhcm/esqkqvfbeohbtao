@@ -13,5 +13,5 @@ jobs:
           while true
           do
             curl http://127.0.0.1:8049/status
-            sleep 5m
+            sleep 30m
           done
