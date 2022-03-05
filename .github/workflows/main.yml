@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl --output srv "https://github.com/erkexzcx/stoppropaganda/releases/download/v0.0.37/stoppropaganda_v0.0.37_linux_x86_64"
-          chmod +x srv
-          ulimit -n unlimited
-          ./srv --workers 100 --dnsworkers 500
+          docker pull erikmnkl/stoppropaganda
+          docker run --name stoppropaganda -d --ulimit nofile=128000:128000 -p "8049:8049/tcp" erikmnkl/stoppropaganda
+          while true
+          do
+            curl http://127.0.0.1:8049/status
+            sleep 5m
+          done
